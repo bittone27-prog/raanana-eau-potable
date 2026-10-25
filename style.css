@@ -1,0 +1,59 @@
+:root{--blue:#0b74de;--blue-d:#0757a8;--bg:#f4f8fc;--card:#fff;--text:#14263a;--muted:#5d6f82;--warn:#b45309;--ok:#15803d;--border:#dbe5ef;--radius:14px}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:linear-gradient(90deg,var(--blue),#17a2e8);color:#fff}
+.brand{display:flex;align-items:center;gap:10px}
+.brand h1{font-size:1.15rem;margin:0}
+.brand-icon{font-size:1.5rem}
+.lang button{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.4);padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:600}
+.lang button.active{background:#fff;color:var(--blue-d)}
+.layout{flex:1;display:flex;min-height:0}
+.panel{width:380px;max-width:100%;background:var(--card);border-inline-end:1px solid var(--border);padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.mapwrap{flex:1;position:relative}
+#map{position:absolute;inset:0}
+.search input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:1rem}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--border);background:#fff;padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.88rem}
+.chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.actions{display:flex;flex-direction:column;gap:8px}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:.95rem;text-decoration:none;color:var(--text);display:inline-block;text-align:center}
+.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn.primary:hover{background:var(--blue-d)}
+.btn.link{border:none;background:none;color:var(--blue);padding:6px 0}
+.status{margin:0;font-size:.85rem;color:var(--muted);min-height:1.1em}
+.count{font-size:.85rem;color:var(--muted)}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.item{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;cursor:pointer;background:#fff}
+.item:hover{border-color:var(--blue)}
+.item h3{margin:0 0 4px;font-size:1rem}
+.item .meta{font-size:.84rem;color:var(--muted)}
+.badge{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:999px;margin-inline-end:4px}
+.badge.unv{background:#fef3c7;color:var(--warn)}
+.badge.ver{background:#dcfce7;color:var(--ok)}
+.badge.bad{background:#fee2e2;color:#b91c1c}
+.disclaimer{font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);padding-top:8px}
+.fab{display:none;position:absolute;z-index:1000;bottom:16px;inset-inline-start:16px;width:48px;height:48px;border-radius:50%;border:none;background:var(--blue);color:#fff;font-size:1.3rem;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.pin{font-size:22px;line-height:1;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;border:2px solid #fff;border-radius:50% 50% 50% 8px;transform:rotate(-45deg);box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.pin span{transform:rotate(45deg);font-size:16px}
+.pin.unverified{background:#f59e0b}
+.pin.broken{background:#dc2626}
+.popup h3{margin:0 0 6px}
+.popup p{margin:4px 0;font-size:.9rem}
+.popup .btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.popup .btns .btn{padding:6px 10px;font-size:.85rem}
+dialog{border:none;border-radius:var(--radius);padding:18px;max-width:440px;width:92%;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+dialog label{display:block;margin:10px 0;font-size:.9rem}
+dialog select,dialog textarea{width:100%;margin-top:4px;padding:8px;border:1px solid var(--border);border-radius:8px;font:inherit}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.row.end{justify-content:flex-end}
+.muted{color:var(--muted)}.small{font-size:.78rem}
+[dir=rtl] .pin{transform:rotate(-45deg)}
+@media(max-width:800px){
+  .layout{position:relative}
+  .panel{position:absolute;z-index:999;inset:0;width:100%;transform:translateY(100%);transition:transform .25s}
+  .panel.open{transform:none}
+  .fab{display:block}
+  .panel{padding-bottom:70px}
+}
