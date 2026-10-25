@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eau potable à Raanana</title>
+<meta name="description" content="Carte interactive des points d'eau potable à Raanana, Israël">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-icon">💧</span><h1 data-i18n="title">Eau potable à Raanana</h1></div>
+  <div class="lang" role="group" aria-label="Langue">
+    <button data-lang="fr" class="active">FR</button>
+    <button data-lang="he">עב</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="panel" id="panel">
+    <div class="search">
+      <input id="search" type="search" data-i18n-ph="search" placeholder="Rechercher un lieu, une rue…" autocomplete="off">
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="actions">
+      <button id="nearest" class="btn primary" data-i18n="nearest">📍 Les plus proches de moi</button>
+      <button id="loadOsm" class="btn" data-i18n="loadOsm">🌍 Charger depuis OpenStreetMap</button>
+    </div>
+    <p id="status" class="status" role="status"></p>
+    <div class="count"><span id="count">0</span> <span data-i18n="results">résultat(s)</span></div>
+    <ul id="list" class="list"></ul>
+    <div class="footer-actions">
+      <button id="reportNew" class="btn link" data-i18n="reportMissing">➕ Signaler un point manquant</button>
+    </div>
+    <p class="disclaimer" data-i18n="disclaimer"></p>
+  </aside>
+  <section class="mapwrap">
+    <div id="map" aria-label="Carte"></div>
+    <button id="togglePanel" class="fab" aria-label="Liste">☰</button>
+  </section>
+</main>
+
+<dialog id="reportDialog">
+  <form method="dialog" id="reportForm">
+    <h2 data-i18n="reportTitle">Faire un signalement</h2>
+    <p class="muted" id="reportPoint"></p>
+    <label><span data-i18n="reportType">Type de signalement</span>
+      <select id="reportKind">
+        <option value="missing" data-i18n="kMissing">Point manquant</option>
+        <option value="broken" data-i18n="kBroken">Fontaine hors service</option>
+        <option value="wrong" data-i18n="kWrong">Information incorrecte</option>
+        <option value="verified" data-i18n="kVerified">Confirmer l'information</option>
+      </select>
+    </label>
+    <label><span data-i18n="reportDetails">Détails (lieu, adresse, horaires…)</span>
+      <textarea id="reportText" rows="4" required></textarea>
+    </label>
+    <div class="row">
+      <button type="button" id="useMyPos" class="btn" data-i18n="addPos">📍 Ajouter ma position</button>
+      <span id="posInfo" class="muted"></span>
+    </div>
+    <div class="row end">
+      <button type="button" id="reportCancel" class="btn" data-i18n="cancel">Annuler</button>
+      <button type="submit" class="btn primary" data-i18n="send">Envoyer</button>
+    </div>
+    <p class="muted small" data-i18n="reportHow"></p>
+  </form>
+</dialog>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
